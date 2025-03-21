@@ -1,0 +1,5 @@
+node_modules/
+.env
+.early.coverage
+credentials.json
+gen-lang-client-0021678840-98face63970b.json

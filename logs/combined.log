@@ -1,0 +1,75 @@
+12:22:42 21/3/2025 [INFO]: Bot login attempt successful
+12:22:43 21/3/2025 [INFO]: Bot logged in as POCA .#7048
+12:23:00 21/3/2025 [DEBUG]: Message received from her_02 in bot-thu-chi-tien: "*add Mua cafe 100k C NEC"
+12:23:00 21/3/2025 [INFO]: Transaction request from her_02: "*add Mua cafe 100k C NEC"
+12:23:00 21/3/2025 [WARN]: Invalid amount format: "cafe" from her_02
+12:23:48 21/3/2025 [DEBUG]: Message received from her_02 in bot-thu-chi-tien: "*add Mua_cafe 100k C NEC"
+12:23:48 21/3/2025 [INFO]: Transaction request from her_02: "*add Mua_cafe 100k C NEC"
+12:23:48 21/3/2025 [DEBUG]: Connecting to Google Sheets
+12:23:48 21/3/2025 [ERROR]: Error in handleAddTransaction: doc.useServiceAccountAuth is not a function
+12:43:00 21/3/2025 [INFO]: Bot login attempt successful
+12:43:00 21/3/2025 [INFO]: Bot logged in as POCA .#7048
+12:43:08 21/3/2025 [INFO]: Bot login attempt successful
+12:43:08 21/3/2025 [INFO]: Bot logged in as POCA .#7048
+12:45:17 21/3/2025 [INFO]: Bot login attempt successful
+12:45:17 21/3/2025 [INFO]: Bot logged in as POCA .#7048
+12:45:43 21/3/2025 [DEBUG]: Message received from her_02 in bot-thu-chi-tien: "*add Mua cafe 100000 C NEC"
+12:45:43 21/3/2025 [ERROR]: Unhandled error in messageCreate event: handleGreetings is not defined
+12:47:04 21/3/2025 [INFO]: Bot login attempt successful
+12:47:04 21/3/2025 [INFO]: Bot logged in as POCA .#7048
+12:57:35 21/3/2025 [INFO]: Message received: *call now
+12:57:35 21/3/2025 [INFO]: Empty channel found: Valhein
+13:01:29 21/3/2025 [INFO]: Message received: *add mua cafe 100000 c nec
+13:02:33 21/3/2025 [INFO]: Message received: *add mua cafe 100000 c nec
+13:02:56 21/3/2025 [INFO]: Message received: *add mua cafe 100000 c nec
+13:03:04 21/3/2025 [INFO]: Message received: *add mua cafe 100k c nec
+13:03:11 21/3/2025 [INFO]: Message received: *add mua_cafe 100000 c nec
+13:03:11 21/3/2025 [ERROR]: Error initializing Google Spreadsheet: doc.useServiceAccountAuth is not a function
+13:03:11 21/3/2025 [ERROR]: Error in handleAddTransaction: doc.useServiceAccountAuth is not a function
+13:13:19 21/3/2025 [INFO]: Message received: *add mua_cafe 100000 c nec
+13:13:19 21/3/2025 [ERROR]: Error in handleAddTransaction: No values in the header row - fill the first row with header values before trying to interact with rows
+13:19:30 21/3/2025 [INFO]: Message received: *add mua_cafe 100000 c nec
+15:03:59 21/3/2025 [INFO]: Message received: *add mua_cafe 100000 c nec
+15:04:24 21/3/2025 [INFO]: Message received: *add mua_cafe 100000 c nec
+15:04:53 21/3/2025 [INFO]: Message received: *add mua_cafe 100000 c nec
+15:05:28 21/3/2025 [INFO]: Message received: *add mua_cafe 100000 c nec
+15:06:18 21/3/2025 [INFO]: Message received: *add mua_cafe 100000 c nec
+15:07:04 21/3/2025 [INFO]: Message received: *add mua bánh mì 100000 c nec ăn uống
+15:07:22 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:09:52 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:09:53 21/3/2025 [ERROR]: Error in handleAddTransaction: Set value to boolean, string, or number
+15:10:25 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:11:24 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:12:03 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:12:33 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:12:56 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:12:56 21/3/2025 [ERROR]: Error in handleAddTransaction: Value number out of range for Date.prototype.toLocaleString options property month
+15:13:39 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:14:07 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:14:32 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:15:10 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:18:51 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:20:35 21/3/2025 [INFO]: Message received: *add mua_bánh_mì 100000 c nec ăn uống
+15:22:18 21/3/2025 [INFO]: Message received: *add help
+15:23:44 21/3/2025 [INFO]: Message received: *add help
+15:24:32 21/3/2025 [INFO]: Message received: *add
+15:24:38 21/3/2025 [INFO]: Message received: *add help
+15:25:08 21/3/2025 [INFO]: Message received: *add help
+15:26:02 21/3/2025 [INFO]: Message received: *add help
+15:29:40 21/3/2025 [INFO]: Message received: *add
+15:29:44 21/3/2025 [INFO]: Message received: *add help
+15:31:18 21/3/2025 [INFO]: Message received: *add
+15:31:22 21/3/2025 [INFO]: Message received: *add help
+15:32:44 21/3/2025 [INFO]: Message received: *add an_pho 50k c nec ăn uống
+15:36:28 21/3/2025 [INFO]: Message received: *add an_pho 50k c nec ăn uống
+15:40:43 21/3/2025 [INFO]: Message received: *stat
+15:41:21 21/3/2025 [INFO]: Message received: *add an_pho 50k c nec ăn uống
+15:41:27 21/3/2025 [INFO]: Message received: *stat
+15:44:00 21/3/2025 [INFO]: Message received: *add di_choi_da_nang 500k c nec du lịch
+15:44:07 21/3/2025 [INFO]: Message received: *stat
+15:46:59 21/3/2025 [INFO]: Message received: *add an_pho 50k c nec ăn uống
+15:47:46 21/3/2025 [INFO]: Message received: *stat
+15:49:06 21/3/2025 [INFO]: Message received: *add an_pho 50k c nec ăn uống
+15:49:35 21/3/2025 [INFO]: Message received: *add an_pho 50k c nec ăn uống
+15:49:35 21/3/2025 [ERROR]: Error in handleAddTransaction: Value has been changed
+15:50:58 21/3/2025 [INFO]: Message received: *add an_pho 50k c nec ăn uống

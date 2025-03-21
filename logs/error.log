@@ -1,0 +1,8 @@
+12:23:48 21/3/2025 [ERROR]: Error in handleAddTransaction: doc.useServiceAccountAuth is not a function
+12:45:43 21/3/2025 [ERROR]: Unhandled error in messageCreate event: handleGreetings is not defined
+13:03:11 21/3/2025 [ERROR]: Error initializing Google Spreadsheet: doc.useServiceAccountAuth is not a function
+13:03:11 21/3/2025 [ERROR]: Error in handleAddTransaction: doc.useServiceAccountAuth is not a function
+13:13:19 21/3/2025 [ERROR]: Error in handleAddTransaction: No values in the header row - fill the first row with header values before trying to interact with rows
+15:09:53 21/3/2025 [ERROR]: Error in handleAddTransaction: Set value to boolean, string, or number
+15:12:56 21/3/2025 [ERROR]: Error in handleAddTransaction: Value number out of range for Date.prototype.toLocaleString options property month
+15:49:35 21/3/2025 [ERROR]: Error in handleAddTransaction: Value has been changed

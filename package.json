@@ -1,0 +1,27 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --trace-deprecation src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/generative-ai": "^0.22.0",
+    "axios": "^1.7.7",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "google-auth-library": "^9.15.1",
+    "google-spreadsheet": "^4.1.4",
+    "nodemon": "^3.1.4",
+    "openai": "^4.85.3",
+    "p-limit": "^6.1.0",
+    "stylelint": "github:stylelint/stylelint",
+    "winston": "^3.17.0"
+  }
+}
