@@ -23,3 +23,11 @@ AxiosError: Google API error - [403] The caller does not have permission
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async E.loadInfo (file:///D:/WorkspaceVSCode/discord-bot/node_modules/google-spreadsheet/dist/index.mjs:1:24482)
     at async file:///D:/WorkspaceVSCode/discord-bot/src/index.js:36:1
+20:37:13 21/3/2025 [ERROR]: uncaughtException: express is not defined
+ReferenceError: express is not defined
+    at file:///D:/WorkspaceVSCode/discord-bot/src/index.js:465:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+20:37:42 21/3/2025 [ERROR]: uncaughtException: express is not defined
+ReferenceError: express is not defined
+    at file:///D:/WorkspaceVSCode/discord-bot/src/index.js:461:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

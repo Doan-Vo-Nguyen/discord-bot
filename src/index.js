@@ -10,6 +10,7 @@ import logger from "./logger/logger.js";
 import creds from "./gen-lang-client-0021678840-98face63970b.json" with { type: "json" };
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
+import express from "express";
 
 const client = new Client({
   intents: [
@@ -445,10 +446,6 @@ const handleStatistic = async (message) => {
   }
 };
 
-
-
-
-
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
   if (message.content.startsWith("*add")) {
@@ -461,3 +458,10 @@ client.on("messageCreate", async (message) => {
 });
 
 client.login(process.env.BOT_TOKEN);
+
+const app = express();
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  logger.info(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
+});
