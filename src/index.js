@@ -7,7 +7,7 @@ import {
 import "dotenv/config";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import logger from "./logger/logger.js";
-import creds from "../gen-lang-client-0021678840-98face63970b.json" with { type: "json" };
+import creds from "./gen-lang-client-0021678840-98face63970b.json" with { type: "json" };
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
 
