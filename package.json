@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "mkdir -p dist && cp -r src/* dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --trace-deprecation src/index.js"
   },
