@@ -4,9 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node src/index.js",
     "build": "mkdir -p dist && cp -r src/* dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --trace-deprecation src/index.js"
+    "dev": "nodemon --trace-deprecation --watch src --ignore data --ignore logs --ignore node_modules src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +24,6 @@
     "nodemon": "^3.1.4",
     "openai": "^4.85.3",
     "p-limit": "^6.1.0",
-    "stylelint": "github:stylelint/stylelint",
     "winston": "^3.17.0"
   }
 }
