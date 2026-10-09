@@ -57,9 +57,36 @@ function loadGoogleCreds() {
   if (fileName) {
     return JSON.parse(fs.readFileSync(path.join(dir, fileName), "utf8"));
   }
-  throw new Error(
-    "Thiếu Google service account. Đặt GOOGLE_SERVICE_ACCOUNT_JSON, hoặc GOOGLE_CLIENT_EMAIL và GOOGLE_PRIVATE_KEY."
-  );
+  return null;
+}
+
+async function openSpreadsheet() {
+  const creds = loadGoogleCreds();
+  if (!process.env.SPREADSHEET_ID_GG || !creds?.client_email || !creds?.private_key) {
+    return null;
+  }
+  const serviceAccountAuth = new JWT({
+    email: creds.client_email,
+    key: creds.private_key,
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+  });
+  const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID_GG, serviceAccountAuth);
+  await doc.loadInfo();
+  return doc;
+}
+
+function sheetDisabledHandlers() {
+  const reply = (message) =>
+    message.reply("Lệnh tài chính đang tắt vì server chưa gắn Google Sheet.");
+  return {
+    transactionHandler: { handleAddTransaction: reply },
+    statisticHandler: { handleStatistic: reply },
+    financeHandler: {
+      ensureChannel: () => true,
+      getLastSpending: reply,
+      getBalance: reply,
+    },
+  };
 }
 
 const discordToken = process.env.DISCORD_TOKEN || process.env.BOT_TOKEN;
@@ -67,18 +94,16 @@ const discordToken = process.env.DISCORD_TOKEN || process.env.BOT_TOKEN;
 try {
 if (!discordToken) throw new Error("Thiếu DISCORD_TOKEN hoặc BOT_TOKEN");
 if (!process.env.GEMINI_API_KEY) throw new Error("Thiếu GEMINI_API_KEY");
-if (!process.env.SPREADSHEET_ID_GG) throw new Error("Thiếu SPREADSHEET_ID_GG");
 
-const creds = loadGoogleCreds();
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID_GG;
-const serviceAccountAuth = new JWT({
-  email: creds.client_email,
-  key: creds.private_key,
-  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-});
-
-const doc = new GoogleSpreadsheet(SPREADSHEET_ID, serviceAccountAuth);
-await doc.loadInfo();
+let doc = null;
+try {
+  doc = await openSpreadsheet();
+} catch (err) {
+  logger.error(`Không mở được Google Sheet: ${err.message}`);
+}
+if (!doc) {
+  logger.warn("Không có Google Sheet. Chat và tin cập nhật vẫn chạy, lệnh tài chính thì tắt.");
+}
 
 const MODEL_NAME = LIGHT_MODEL;
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -87,14 +112,19 @@ const VALID_HANG_MUC = ["T", "C"];
 const VALID_HU = ["NEC", "LTSS", "FFA", "EDU", "PLAYL", "GIVE"];
 const SHEET_FINANCE_TITLE = process.env.GSHEET_FINANCE_TITLE || "FINANCE";
 
-const transactionHandler = createTransactionHandler(doc, {
-  VALID_HANG_MUC,
-  VALID_HU,
-  sheetTitle: SHEET_FINANCE_TITLE,
-});
-const statisticHandler = createStatisticHandler(doc, { sheetTitle: SHEET_FINANCE_TITLE });
+const disabledSheets = doc ? null : sheetDisabledHandlers();
+const transactionHandler = disabledSheets
+  ? disabledSheets.transactionHandler
+  : createTransactionHandler(doc, {
+      VALID_HANG_MUC,
+      VALID_HU,
+      sheetTitle: SHEET_FINANCE_TITLE,
+    });
+const statisticHandler = disabledSheets
+  ? disabledSheets.statisticHandler
+  : createStatisticHandler(doc, { sheetTitle: SHEET_FINANCE_TITLE });
 const chatHandler = createChatHandler(genAI, MODEL_NAME);
-const financeHandler = createFinanceHandler(doc);
+const financeHandler = disabledSheets ? disabledSheets.financeHandler : createFinanceHandler(doc);
 const nlu = createNlu(genAI, MODEL_NAME);
 const summarizer = createSummarizer(genAI, MODEL_NAME);
 const updateHandler = createUpdateHandler(summarizer);
