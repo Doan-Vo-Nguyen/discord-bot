@@ -30,6 +30,18 @@ const client = new Client({
   ],
 });
 
+const app = express();
+const PORT = Number(process.env.PORT) || 10000;
+app.get(["/", "/health"], (_req, res) => {
+  res.status(200).type("text/plain").send("ok");
+});
+const server = app.listen(PORT, "0.0.0.0", () => {
+  logger.info(`Server is listening on 0.0.0.0:${PORT}`);
+});
+server.on("error", (err) => {
+  logger.error(`HTTP server error: ${err.message}`);
+});
+
 function loadGoogleCreds() {
   if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
     return JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
@@ -51,18 +63,11 @@ function loadGoogleCreds() {
 }
 
 const discordToken = process.env.DISCORD_TOKEN || process.env.BOT_TOKEN;
-if (!discordToken) {
-  logger.error("Thiếu DISCORD_TOKEN hoặc BOT_TOKEN");
-  process.exit(1);
-}
-if (!process.env.GEMINI_API_KEY) {
-  logger.error("Thiếu GEMINI_API_KEY");
-  process.exit(1);
-}
-if (!process.env.SPREADSHEET_ID_GG) {
-  logger.error("Thiếu SPREADSHEET_ID_GG");
-  process.exit(1);
-}
+
+try {
+if (!discordToken) throw new Error("Thiếu DISCORD_TOKEN hoặc BOT_TOKEN");
+if (!process.env.GEMINI_API_KEY) throw new Error("Thiếu GEMINI_API_KEY");
+if (!process.env.SPREADSHEET_ID_GG) throw new Error("Thiếu SPREADSHEET_ID_GG");
 
 const creds = loadGoogleCreds();
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID_GG;
@@ -193,16 +198,6 @@ startUpdateScheduler(client, summarizer);
 client.login(discordToken).catch((err) => {
   logger.error(`Không đăng nhập Discord được: ${err.message}`);
 });
-
-const app = express();
-const PORT = process.env.PORT || 10000;
-const server = app.listen(PORT, () => {
-  logger.info(`Server is running on port ${PORT}`);
-});
-server.on("error", (err) => {
-  if (err.code === "EADDRINUSE") {
-    logger.warn(`Cổng ${PORT} đang được dùng, bỏ qua HTTP server.`);
-    return;
-  }
-  logger.error(`HTTP server error: ${err.message}`);
-});
+} catch (err) {
+  logger.error(`Không khởi động bot được: ${err.message}`);
+}
